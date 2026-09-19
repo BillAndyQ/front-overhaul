@@ -74,7 +74,7 @@ export default function pageEquipos() {
     }
 
     const createOt = async () => {
-        const API_URL = process.env.NEXT_PUBLIC_API_URL;
+        // const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
         try {
             const response = await axios.post(`${API_URL}/api/v1/create_ot`);
