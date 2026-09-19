@@ -10,7 +10,7 @@ export async function POST(req: Request) {
   }
 
   // Buscar usuario en la base de datos
-  const user = await prisma.user.findUnique({
+  const user = await prisma.users.findUnique({
     where: { username }
   });
 
