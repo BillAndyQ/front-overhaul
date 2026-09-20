@@ -7,16 +7,16 @@ import { GripVertical } from "lucide-react"
 import type { CSSProperties } from "react"
 
 import { TableHead } from "@/components/ui/table"
-import type { Servicio } from "@/lib/data"
 import { cn } from "@/lib/utils"
 
-interface DraggableHeaderProps {
-  header: Header<Servicio, unknown>
+interface DraggableHeaderProps<TData> {
+  header: Header<TData, unknown>
+  /** Columnas fijas: no se pueden reordenar ni muestran el grip. */
+  fixed?: boolean
 }
 
-export function DraggableHeader({ header }: DraggableHeaderProps) {
-  // La columna de acciones no se puede reordenar.
-  const isDraggable = header.column.id !== "actions"
+export function DraggableHeader<TData>({ header, fixed = false }: DraggableHeaderProps<TData>) {
+  const isDraggable = !fixed
 
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: header.column.id,

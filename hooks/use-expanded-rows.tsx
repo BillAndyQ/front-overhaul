@@ -40,7 +40,13 @@ export function useExpandedRows(initialExpanded: Set<string> = new Set()) {
     })
   }, [])
 
+  const expandAll = useCallback((n_ots: string[]) => {
+    setExpanded((prev) => new Set([...prev, ...n_ots]))
+  }, [])
+
+  const collapseAll = useCallback(() => setExpanded(new Set()), [])
+
   const isExpanded = useCallback((n_ot: string) => expanded.has(n_ot), [expanded])
 
-  return { expanded, toggleExpanded, isExpanded, isMounted }
+  return { expanded, toggleExpanded, expandAll, collapseAll, isExpanded, isMounted }
 }
