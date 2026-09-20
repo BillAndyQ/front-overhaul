@@ -17,8 +17,20 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           passphrase: ${{ secrets.VPS_SSH_PASSPHRASE }}
+
           script: |
-            cd ~/front-overhaul
+            set -e
+
+            export NVM_DIR="/root/.nvm"
+            source "$NVM_DIR/nvm.sh"
+
+            nvm use 24.10.0
+
+            echo "Node: $(node -v)"
+            echo "NPM: $(npm -v)"
+            echo "PM2: $(pm2 -v | head -n 1)"
+
+            cd /root/front-overhaul
 
             git pull origin main
 
@@ -27,3 +39,5 @@ jobs:
             npm run build
 
             pm2 restart front-overhaul
+
+            pm2 save
