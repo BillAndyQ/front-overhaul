@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overscroll-behavior: none;
+  }
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chrome-tab-active {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  box-shadow: 0 -1px 3px rgba(0,0,0,0.06);
+  border-top: 2px solid #059669 !important;
+}
+
+.service-row-selected {
+  background-color: rgba(236, 253, 245, 0.75) !important;
+  border-left: 4px solid #059669 !important;
+}
+
+.doc-row-selected {
+  background-color: rgba(239, 246, 255, 0.85) !important;
+  border-left: 4px solid #2563eb !important;
+}
